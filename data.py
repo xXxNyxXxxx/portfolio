@@ -8,7 +8,7 @@ PROFILE = {
         "for the people who rely on them."
     ),
     "location": "Biñan City, Laguna, Philippines",
-    "stack": ["Microsoft 365", "Intune", "SQL"],
+    "stack": ["Python", "Java", "C#"],
     "bio": [
         "I'm an IT support specialist with 3+ years of experience across service "
         "desk operations, end-user support, and live production systems. I've "
