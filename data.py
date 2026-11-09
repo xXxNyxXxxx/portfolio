@@ -187,8 +187,8 @@ PROJECTS = [
             "Version-controlled on GitHub and deployed to a live host",
         ],
         "tech": ["Python", "Flask", "Jinja2", "Bootstrap 5", "Git"],
-        "github": None,  # add the repo URL once it is pushed to GitHub
-        "live": None,    # add the live URL after deployment
+        "github": "https://github.com/xXxNyxXxxx/portfolio",
+        "live": "https://camille-portfolio.onrender.com",
         "featured": True,
     },
 ]
