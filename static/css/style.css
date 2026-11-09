@@ -1,0 +1,86 @@
+:root {
+  --bg: #11151f;
+  --surface: #1a2030;
+  --line: #2a3246;
+  --text: #e7e9ef;
+  --muted: #9aa4b8;
+  --accent: #e6b450;
+  --accent-ink: #1b1403;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "IBM Plex Sans", system-ui, sans-serif;
+  --grid: #232b3f;
+  --bg-alt: #151a27;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.65; }
+h1, h2, h3, .navbar-brand { font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.site-nav { background: rgba(17, 21, 31, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.navbar-brand { font-size: 1.3rem; color: var(--text); }
+.nav-link { color: var(--muted); }
+.nav-link:hover { color: var(--text); }
+
+.hero { position: relative; isolation: isolate; padding: 5rem 0 4rem; }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent);
+}
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.08; margin-bottom: 1.2rem; }
+.hero .lead { color: var(--muted); max-width: 34rem; margin-bottom: 2rem; }
+
+.code-card { background: var(--surface); border: 1px solid var(--line); border-radius: .75rem; padding: 1.4rem; margin: 0; font-size: .9rem; overflow-x: auto; color: var(--text); }
+.code-card .k { color: #c792ea; } .code-card .s { color: #a5d6a7; }
+.code-card .f { color: #82aaff; } .code-card .c { color: var(--accent); }
+
+.section { padding: 4rem 0; border-top: 1px solid var(--line); }
+.section h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+.section h3 { font-size: 1.2rem; }
+.prose { max-width: 40rem; color: var(--muted); }
+.prose-wide { max-width: 46rem; }
+
+.skill-list { list-style: none; padding: 0; margin: 0; color: var(--muted); }
+.skill-list li { padding: .2rem 0; }
+
+.project-card { display: block; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; color: var(--text); text-decoration: none; transition: border-color .2s, transform .2s; }
+.project-card:hover { border-color: var(--accent); transform: translateY(-3px); color: var(--text); }
+.project-card p { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag { font-size: .8rem; padding: .15rem .6rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+
+.btn-accent { background: var(--accent); color: var(--accent-ink); font-weight: 600; border: 0; }
+.btn-accent:hover { background: #f0c266; color: var(--accent-ink); }
+.btn-outline-light { border-color: var(--line); color: var(--text); }
+.btn-outline-light:hover { background: var(--surface); border-color: var(--accent); color: var(--text); }
+
+.back-link { text-decoration: none; color: var(--muted); }
+.highlights { color: var(--muted); padding-left: 1.2rem; }
+
+.site-footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted); font-size: .9rem; }
+.site-footer a { color: var(--muted); }
+.site-footer a:hover { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project-card { transition: none; }
+  .project-card:hover { transform: none; }
+}
+
+.jobs { max-width: 46rem; }
+.job { padding-left: 1.25rem; border-left: 2px solid var(--line); margin-bottom: 2rem; }
+.job:hover { border-left-color: var(--accent); }
+.job h3 { margin-bottom: .1rem; }
+.job-meta { color: var(--muted); margin-bottom: .6rem; }
+.job ul { color: var(--muted); padding-left: 1.1rem; margin: 0; }
+.job li { margin-bottom: .35rem; }
+
+main > section:nth-of-type(even) { background: var(--bg-alt); }

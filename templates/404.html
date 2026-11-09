@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Something went wrong' if server_error else 'Page not found' }}{% endblock %}
+{% block content %}
+<section class="section pt-5">
+  <div class="container prose-wide">
+    <h1>{{ 'Something went wrong' if server_error else 'Page not found' }}</h1>
+    <p class="lead">{{ 'The server hit an error. Try again in a moment.' if server_error else "That page doesn't exist. It may have moved." }}</p>
+    <a class="btn btn-accent" href="{{ url_for('index') }}">Go to the homepage</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <h1>{{ profile.title }}</h1>
+        <p class="lead">{{ profile.tagline }}</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="#projects" class="btn btn-accent">See my projects</a>
+          <a href="mailto:{{ profile.email }}" class="btn btn-outline-light">Email me</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <pre class="code-card" aria-label="Summary of {{ profile.name }}"><code><span class="c">@app.route("/")</span>
+<span class="k">def</span> <span class="f">developer</span>():
+    <span class="k">return</span> {
+        <span class="s">"name"</span>: <span class="s">"{{ profile.name }}"</span>,
+        <span class="s">"stack"</span>: [{% for s in profile.stack %}<span class="s">"{{ s }}"</span>{{ ", " if not loop.last }}{% endfor %}],
+        <span class="s">"based_in"</span>: <span class="s">"{{ profile.location }}"</span>,
+        <span class="s">"open_to_work"</span>: <span class="k">True</span>,
+    }</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <h2>About me</h2>
+    <div class="prose">
+      {% for paragraph in profile.bio %}<p>{{ paragraph }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="container">
+    <h2>Experience</h2>
+    <div class="jobs">
+      {% for job in experience %}
+      <article class="job">
+        <h3>{{ job.role }}</h3>
+        <p class="job-meta">{{ job.company }}, {{ job.period }}</p>
+        <ul>{% for point in job.points %}<li>{{ point }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+    </div>
+    <h3 class="mt-5">Certification and education</h3>
+    <ul class="skill-list">
+      {% for c in credentials %}<li>{{ c.name }}{% if c.detail %}, {{ c.detail }}{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="row g-4">
+      {% for group, items in skills.items() %}
+      <div class="col-sm-6 col-lg-4">
+        <h3>{{ group }}</h3>
+        <ul class="skill-list">{% for item in items %}<li>{{ item }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="row g-4">
+      {% for p in projects %}
+      <div class="col-md-6 col-lg-4">
+        <a class="project-card" href="{{ url_for('project', project_id=p.id) }}">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.summary }}</p>
+          <div class="tags">{% for t in p.tech %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Get in touch</h2>
+    <p class="prose">{{ profile.contact_blurb }}</p>
+    <div class="d-flex flex-wrap gap-2">
+      <a class="btn btn-accent" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+      <a class="btn btn-outline-light" href="{{ profile.github }}" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-outline-light" href="{{ profile.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} | {{ profile.name }}{% endblock %}
+{% block content %}
+<section class="section pt-5">
+  <div class="container prose-wide">
+    <a href="{{ url_for('index') }}#projects" class="back-link">Back to projects</a>
+    <h1 class="mt-3">{{ project.title }}</h1>
+    <div class="tags mb-4">{% for t in project.tech %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+    <p class="lead">{{ project.description }}</p>
+
+    <h2 class="h4 mt-5">What I did</h2>
+    <ul class="highlights">{% for h in project.highlights %}<li>{{ h }}</li>{% endfor %}</ul>
+
+    <div class="d-flex flex-wrap gap-2 mt-4">
+      {% if project.github %}
+      <a class="btn btn-accent" href="{{ project.github }}" target="_blank" rel="noopener">View source on GitHub</a>
+      {% endif %}
+      {% if project.live %}
+      <a class="btn btn-outline-light" href="{{ project.live }}" target="_blank" rel="noopener">Open live demo</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
